@@ -222,15 +222,14 @@ def run_standalone(repo, app_name, restart_cmd=None,
     root.mainloop()
 
 if __name__ == "__main__":
-    import argparse
-    p = argparse.ArgumentParser(description="GUI wrapper for updater.py")
-    p.add_argument("--repo", required=True, help="owner/repo")
-    p.add_argument("--app-name", required=True)
-    p.add_argument("--restart-cmd", default=None)
-    p.add_argument("--app-dir", default=None)
-    p.add_argument("--version-file", default=None)
-    p.add_argument("--asset-pattern", default=DEFAULT_ASSET_PATTERN)
-    p.add_argument("--include-prereleases", action="store_true")
-    args = p.parse_args()
-    run_standalone(args.repo, args.app_name, args.restart_cmd, args.app_dir,
-                   args.version_file, args.asset_pattern, args.include_prereleases)
+    # Hardcoded defaults for quick testing
+    run_standalone(
+        repo="GitDevLane/py-updater",
+        app_name="myapp",
+        restart_cmd=None,
+        app_dir="app",
+        version_file="version.json",
+        asset_pattern=DEFAULT_ASSET_PATTERN,
+        include_prereleases=False
+    )
+
